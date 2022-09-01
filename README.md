@@ -1,0 +1,1 @@
+# PARIVESH-for-educational-institutions-django-project
