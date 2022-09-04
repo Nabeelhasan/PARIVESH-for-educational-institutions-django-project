@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+{% load rm_special_chars %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="PARIVESH">
+        <meta name="keywords" content="Django, SQL3, HTML, CSS, Bootstrap, JavaScript, jQuery, PARIVESH">
+        <meta name="author" content="Ravindra Mevada">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+        <!-- External CSS -->
+        <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+        <title>PARIVESH</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div id="header">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" width="100px" height="50px">
+                <p id="heading" style="margin: 3px 0 10px 0;">PARIVESH</p>
+                <p id="meaning"><strong>P</strong>ro <strong>A</strong>ctive and <strong>R</strong>esponsive facilitation by <strong>I</strong>nteractive and <strong>V</strong>irtuous <strong>E</strong>nvironmental <strong>S</strong>ingle-window <strong>H</strong>ub</p>
+            </div>
+            <div class="shadow">
+                <h2>Proposal</h2>
+                <p style="text-align: center;"><span id="id_proposal2">{{proposal.id}}</span></p>
+                <div id="proposer-img"><img src="{{proposal.proposer_img.url}}" class="img" alt="Proposer Image"></div>
+                <div id="proposer-details">
+                    <p><strong>Name: </strong>{{proposal.name}} <span style='color: #70706d;'><em>({{proposal.enrollment_no}})</em></span></p>
+                    <p><strong>Date of Birth: </strong>{{proposal.dob}}</p>
+                    <p><strong>Gender: </strong>{{proposal.gender}}</p>
+                    <p><strong>Address: </strong>{{proposal.locality}}, {{proposal.city}}, {{proposal.state}} - {{proposal.pin}}</p>
+                    <p><strong>Mobile No: </strong><a href="tel:+91{{proposal.mobile}}">+91{{proposal.mobile}}</a></p>
+                    <p><strong>Email Id: </strong><a href="mailto:{{proposal.email}}">{{proposal.email}}</a></p>
+                    <p><strong>Preferred Locations: </strong>{{proposal.locations|remove_special_characters:"[]'"}}</p>
+                    <p><strong>Attachment: </strong><a href="{{proposal.attachment.url}}"><input type="button" class="download-button" value="Download"></a></p>
+                </div>
+            </div>
+            <div style="text-align: center;"><a href="/"><input type="button" class="home-page-button" value="Home Page"></a></div>
+        </div>
+    </body>
+</html>

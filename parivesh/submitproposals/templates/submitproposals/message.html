@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="PARIVESH">
+        <meta name="keywords" content="Django, SQL3, HTML, CSS, Bootstrap, JavaScript, jQuery, PARIVESH">
+        <meta name="author" content="Ravindra Mevada">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+        <!-- jQuery Dialog Widget: https://jqueryui.com/dialog/ -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" integrity="sha384-vIQIPaHJRqkO8xhnLxSZ0rHF6LyiWXbLF3grsa9pv9yDFyOPGrE1teHOuRNMJoZs" crossorigin="anonymous">
+        <!-- External CSS -->
+        <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+        <title>PARIVESH</title>
+    </head>
+    <body>
+        <div id="dialog">
+            <p>We appreciate you completing the form. You have to wait for the email from us to know whether your proposal is accepted or rejected after the form will be approved by the system and the admin. To visit the home page or see other proposals, <a href="/"><strong>click here.</strong></a></p>
+        </div>
+        <!-- jQuery Dialog Widget: https://jqueryui.com/dialog/ -->
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha384-S58meLBGKxIiQmJ/pJ8ilvFUcGcqgla+mWH9EEKGm6i6rKxSTA2kpXJQJ8n7XK4w" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha384-EZJUCwX9EfOmrML5/1WejmhFx/azi54nnVfOndPu+VTQKOHabXXC9eS7VFdkLz0V" crossorigin="anonymous"></script>
+        <script>
+            // ✓ override the undocumented _title function, according to Bug #6016 (https://bugs.jqueryui.com/ticket/6016) to ensure that the title attribute is not escaped...
+            var dialog = $("#dialog").dialog();
+            dialog.data( "uiDialog" )._title = function(title) {
+                title.html( this.options.title);
+            };
+            dialog.dialog('option', 'title', "<img src='{% static 'images/logo.png' %}' alt='Logo' width='100px' height='50px'><br>Thank you!");
+        </script>
+    </body>
+</html>
+<!-- Subresource Integrity (SRI) is a new W3C specification that allows web developers to ensure that resources hosted on third-party servers
+     have not been tampered with. Use of SRI is recommended as a best-practice, whenever libraries are loaded from a third-party source.
+     corssorigin: sets the mode of the request to an HTTP CORS Request
+     CORS is stands for Cross-Origin Resource Sharing. It is a mechanism by which one webpage requests to another domain for fetching out the 
+     resource like audio, video, script, etc. from the third party server without leaking their credentials information.
+     anonymous: defines a CORS request which will be sent without passing the credential information -->
